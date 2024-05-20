@@ -1,0 +1,298 @@
+@import url('https://fonts.googleapis.com/css2?family=Agbalumo&family=DM+Sans:ital,opsz,wght@0,9..40,100;0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;0,9..40,900;0,9..40,1000;1,9..40,100;1,9..40,200;1,9..40,300;1,9..40,400;1,9..40,500;1,9..40,600;1,9..40,700;1,9..40,800;1,9..40,900;1,9..40,1000&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "DM Sans", sans-serif;
+    text-decoration: none;
+    list-style: none;
+}
+
+:root {
+    --corPrincipal: #124559;
+    --corHover: #123745;
+    --corActive: #0B222B;
+    --corPrincipalClara: #1D6987;
+    --corPrincipalMaisClara: #2B8EB5;
+    --corBg: #fff;
+    --corBg2: #F2F7F9;
+}
+
+body {
+    margin: 0;
+    height: 100vh;
+    background: var(--corBg);
+    overflow: hidden;
+}
+
+.container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.left-login {
+    width: 50vw;
+    height: 100vh;
+    padding: 4%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.left-login .titulo {
+    color: var(--corPrincipal);
+    font-size: 40px;
+    margin-top: 2%;
+    font-weight: 800;
+    padding-left: 10%;
+    padding-top: 4%;
+}
+
+.left-login .lbtxt {
+    font-size: 22px;
+    padding-left: 10%;
+}
+
+.left-login .imagem {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    margin-top: 2%;
+    margin-left: 15%;
+}
+
+.right-login {
+    width: 50vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-login {
+    width: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 30px 15px;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    min-height: 400px;
+    background: var(--corBg2);
+    border-radius: 30px;
+    box-shadow: var(--corPrincipal) 0px 5px 5px;
+}
+
+.card-login .titulo2 {
+    color: var(--corPrincipal);
+    font-weight: 800;
+    font-size: 26px;
+    margin: 0;
+}
+
+form {
+    width: 95%;
+    height: 100%;
+}
+
+.icon {
+    font-size: 26px;
+    color: var(--corPrincipal);
+    padding: 2%;
+}
+
+.input {
+    display: flex;
+    height: 50px;
+    width: 100%;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 2%;
+    background: var(--corBg);
+    border-radius: 30px;
+    box-shadow: var(--corPrincipal) 0px 4px 6px -1px, var(--corPrincipal) 0px 2px 4px -1px;
+    outline: none;
+    margin: 0;
+    margin-bottom: 20px;
+}
+
+.campotxt:focus {
+    outline: none; 
+}
+
+.campotxt {
+    width: 93%;
+    margin-left: 2%;
+    font-size: 18px;
+    border: none;
+    background: transparent;
+    padding: 1%;
+}
+
+.redef-senha  {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+    margin-top: -5px;
+    cursor: pointer;
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--corPrincipalClara);
+
+    &:hover {
+        color: var(--corPrincipal);
+    }
+    &:active {
+        color: var(--corHover);
+    }
+}
+
+
+.btn-login {
+    display: flex;
+    position: relative;
+    overflow: hidden;
+    height: 50px;
+    padding: 0 2rem;
+    text-align: center;
+    border-radius: 1.5rem;
+    background: var(--corActive);
+    background-size: 400%;
+    color: #fff;
+    border: none;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  
+  .btn-login:hover::before {
+    transform: scaleX(1);
+  }
+  
+  .btn-login-content {
+    position: relative;
+    z-index: 1;
+    font-size: 22px;
+    color: var(--corBg);;
+  }
+  
+  .btn-login::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: scaleX(0);
+    transform-origin: 0 50%;
+    width: 100%;
+    height: inherit;
+    border-radius: inherit;
+    background: linear-gradient(
+      82.3deg,
+      var(--corPrincipal) 10.8%,
+      var(--corPrincipalClara) 94.3%
+    );
+    transition: all 0.475s;
+  }
+  
+
+.alt {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.alt p {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.alt a {
+    color: var(--corPrincipal);
+    font-weight: 700;
+    cursor: pointer;
+
+    &:hover {
+        color: var(--corHover);
+    }
+    &:active {
+        color: var(--corActive);
+    }
+}
+
+@media screen and (max-width: 1999px) {
+    .imagem {
+        width: 90%;
+        margin-left: 30%;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    body {
+        overflow: auto;
+        flex-direction: column;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        
+        min-height: 160vh;
+    }
+
+    .left-login {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        margin-top: -40%;
+        margin-bottom: 20px;
+        padding: 2%;
+    }
+
+
+    .left-login .titulo {
+        font-size: 32px;
+        margin: 0;
+        padding: 0;
+    }
+
+    .left-login .lbtxt {
+        padding: 0;
+    }
+
+    .left-login .imagem {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 95%;
+        margin: 0;
+    }
+
+    .right-login {
+        width: 90%;
+        margin-bottom: 20px;
+        margin-top: -60%;
+    }
+    
+
+    .card-login {
+        width: 100%;
+    }
+
+    .campotxt {
+        font-size: 16px;
+    }
+}
