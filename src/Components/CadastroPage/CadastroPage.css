@@ -102,11 +102,11 @@ form {
 
 .input-cadastro {
     display: flex;
-    height: 50px;
+    height: 40px;
     width: 100%;
     align-items: center;
     justify-content: flex-start;
-    padding: 2%;
+    padding: 1%;
     background: var(--corBg);
     border-radius: 30px;
     outline: none;
@@ -122,11 +122,9 @@ form {
 
 .campotxt {
     width: 93%;
-    margin-left: 2%;
     font-size: 18px;
     border: none;
     background: transparent;
-    padding: 1%;
 }
 
 .input-cadastro select {
@@ -139,6 +137,11 @@ form {
     outline: none;
     cursor: pointer;
     padding-left: 2%;
+}
+
+select#selectSetor {
+    outline: none;
+    border: none;
 }
 
 .div-select {
@@ -174,12 +177,12 @@ form {
     width: 100%;
     margin-bottom: 10px;
     margin-top: 5px;
-    height: 50px;
+    height: 40px;
     max-height: 50px;
     font-size: 18px;
     align-items: center;
     justify-content: flex-start;
-    padding-left: 10%;
+    padding-left: 8%;
     border: none;
     background: var(--corBg);
     border-radius: 30px;
@@ -201,13 +204,13 @@ form {
     width: 100%;
     margin-bottom: 10px;
     margin-top: 5px;
-    height: 50px;
+    height: 40px;
     max-height: 50px;
     border: none;
     font-size: 18px;
     align-items: center;
     justify-content: flex-start;
-    padding-left: 10%;
+    padding-left: 8%;
     background: var(--corBg);
     border-radius: 30px;
     border: 1px solid var(--corPrincipal);
@@ -289,6 +292,102 @@ form {
         color: var(--corActive);
     }
 }
+
+
+/* --- PARTE DOS BOTÕES DE TIPO DE USUÁRIO --- */
+.radio-btn {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin-bottom: 10px;
+    font-size: 20px;
+    margin-top: 20px;
+    justify-content: start;
+}
+
+.radio-btn input {
+    display: none; 
+}
+
+.radio-btn .check {
+    cursor: pointer;
+    position: relative;
+    margin-right: 10px; 
+    width: 18px;
+    height: 18px;
+    -webkit-tap-highlight-color: transparent;
+    transform: translate3d(0, 0, 0);
+}
+
+.radio-btn .check:before {
+    content: "";
+    position: absolute;
+    top: -15px;
+    left: -15px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(34, 50, 84, 0.03);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.radio-btn .check svg {
+    position: relative;
+    z-index: 1;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke: #c8ccd4;
+    stroke-width: 1.5;
+    transform: translate3d(0, 0, 0);
+    transition: all 0.2s ease;
+}
+
+.radio-btn .check svg path {
+    stroke-dasharray: 60;
+    stroke-dashoffset: 0;
+}
+
+.radio-btn .check svg polyline {
+    stroke-dasharray: 22;
+    stroke-dashoffset: 66;
+}
+
+.radio-btn .check:hover:before {
+    opacity: 1;
+}
+
+.radio-btn .check:hover svg {
+    stroke: var(--accent-color, #123745A);
+}
+
+.radio-btn input:checked + .check svg {
+    stroke: var(--accent-color, #123745);
+}
+
+.radio-btn input:checked + .check svg path {
+    stroke-dashoffset: 60;
+    transition: all 0.3s linear;
+}
+
+.radio-btn input:checked + .check svg polyline {
+    stroke-dashoffset: 42;
+    transition: all 0.2s linear;
+    transition-delay: 0.15s;
+}
+
+.radio-btn span {
+    cursor: pointer;
+}
+
+.lb-radio {
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--corPrincipal);
+    margin-bottom: 20px;
+}
+
 
 @media screen and (min-width: 1699px) {
     .panel-cadastro {
@@ -397,5 +496,15 @@ form {
 
     .alt {
         margin-bottom: 30px;
+    }
+
+    .radio-btn {
+        margin-top: 30px;
+        margin-bottom: 10px;
+    }
+
+    .lb-btn-radio {
+        text-align: left;
+        font-size: 16px;
     }
 }
