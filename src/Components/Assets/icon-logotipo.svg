@@ -1,0 +1,9 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+	<title>icon-logo-svg</title>
+	<defs>
+		<image  width="19" height="20" id="img1" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAAUCAMAAABYi/ZGAAAAAXNSR0IB2cksfwAAAJZQTFRFAAAA////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////wCXFqAAAADJ0Uk5TAEiAfB88/+EHA9aBcPge8JK7YxFAPwYy2RbszKVNn2/yuTUVxZOUOvcatIMm/ekKPX/3OEP8AAAAv0lEQVR4nE2QfQvBUBSHzy+WpuVl0hoaLSIpvv+3IJKXWl6SpDGlyfzhurs7163b+fV0z3M7B0TA736ID8iArHhpZqoXxlMz652GAh7MyrFKxTuzatZjhTX52YXg3FJkRxVcRa2HMah1kcw5eGcZ3B2oZJ9Eagb+MW1o5ITCTYiifNzdK3FbMKVm1gG5Su0FKfLFrKwebmXoLaDVJlaiDjCFVm8mM6JxMifNOmuerc/qpd4fq/92OsrUf4wyNZ8vekE3rNgTmzsAAAAASUVORK5CYII="/>
+	</defs>
+	<style>
+	</style>
+	<use id="Pasta 1" href="#img1" x="3" y="2"/>
+</svg>

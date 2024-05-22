@@ -29,7 +29,57 @@ body {
     left: 0;
     height: 100%;
     width: 300px;
+    z-index: 100;
     background: linear-gradient(39deg, rgba(11,34,43,1) 0%, rgba(18,69,89,1) 35%, rgba(29,105,135,1) 100%);
+    transition: all .2s ease;
+}
+
+.sidebar.closed {
+    width: 100px;
+}
+
+.sidebar.closed .text {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.sidebar.closed .logotipo {
+    display: none;
+}
+
+.sidebar.closed .nav-icon {
+    min-width: 80px;
+}
+
+.sidebar.closed .icon-logo {
+    display: flex;
+    align-items: center;
+    padding: 0;
+    width: 60px;
+    height: 50px;
+    pointer-events: none;
+    font-size: 30px;
+    margin-top: 8px;
+}
+
+.sidebar.closed li {
+    padding: 10%;
+}
+
+.sidebar.closed .icon-logo {
+    margin-left: 15%;
+    margin-top: 18%;
+}
+
+.sidebar.closed .logotipo {
+    opacity: 0;
+}
+
+.sidebar.closed header .toggle {
+    right: -15%;
+    transform: translateY(-50%);
+    width: 35px;
+    height: 35px;
 }
 
 header {
@@ -38,32 +88,52 @@ header {
 }
 
 .panel-logo {
+    display: flex;
+    align-items: center;
+    text-align: left;
     width: 100%;
-    min-height: 50px;
     padding: 4%;
+    margin-top: 3%;
+}
+
+.icon-logo {
+    width: 60px;
+    height: 60px;
+    color: white;
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .sidebar .panel-logo .logotipo {
-    width: 300px;
-    font-size: 32px;
+    margin-left: 10px;
+    font-size: 30px;
     font-weight: 800;
     color: var(--corBg);
+    transition: all 1s ease;
 }
 
 .sidebar header .toggle {
     position: absolute;
     top: 5%;
-    right: -7%;
-    transform: translateY(-50%);
-    height: 25px;
-    width: 25px;
+    right: -5%;
+    height: 35px;
+    width: 35px;
     display: flex;
     align-items: center;
+    transform: translateY(-50%) rotate(180deg);
     background: var(--corPrincipalMaisClara);
     color: var(--corBg);
     justify-content: center;
+    cursor: pointer;
     border-radius: 50%;
-    font-size: 12px;
+    transition: all .3s ease;
+}
+
+.toggle-icon {
+    width: 15px;
+    height: 15px;
 }
 
 .fa-chevron-right {
@@ -77,22 +147,33 @@ header {
     list-style: none;
     display: flex;
     align-items: center;
-
-    &:hover {
-        background: var(--corPrincipalClara);
-    }
 }
 
 .sidebar li a {
     font-size: 22px;
     height: 100%;
+    min-height: 60px;
     width: 100%;
     display: flex;
     align-items: center;
     color: var(--corBg);
     text-decoration: none;
+    border-radius: 10px;
+    transition: all .2s ease-in;
+
+    &:hover {
+        background: var(--corBg);
+        color: var(--corPrincipal);
+        border-radius: 10px;
+        
+    }
 }
 
+.sidebar li a.active {
+    background: var(--corBg);
+    color: var(--corPrincipal);
+    pointer-events: none;
+}
 
 
 .sidebar li .nav-icon {
@@ -105,4 +186,74 @@ header {
 
 .sidebar .nav-text {
     margin-left: 10px;
+}
+
+.sidebar .menu-bar {
+    height: 88%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.main {
+    position: relative;
+    left: 230px;
+    height: 100vh;
+    width: calc(100% - 230px);
+    transition: all .4s ease;
+}
+
+.sidebar.closed ~ .main {
+    left: 90px;
+    width: calc(100% - 90px);
+}
+
+/* ----- CONFIGURANDO OS TOOLTIPS ---- */
+
+.nav-link {
+    position: relative; 
+}
+
+.nav-tooltip {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0;
+    background-color: rgba(12, 12, 12, 0.9);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.3s ease, right 0.3s ease;
+    pointer-events: none;
+    letter-spacing: 0.5px;
+    z-index: 300;
+    white-space: nowrap;
+
+    /* Adicione um recuo fixo à direita */
+    right: -130px;
+}
+
+.nav-tooltip::before {
+    position: absolute;
+    content: "";
+    width: 10px;
+    height: 10px;
+    background-color: rgba(12, 12, 12, 0.9);
+    transform: rotate(45deg);
+    left: -5px;
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+}
+
+.sidebar.closed .nav-link:hover .nav-tooltip {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Espaçamento à direita dos itens do menu para acomodar os tooltips */
+.nav-link {
+    padding-right: 100px; /* Adicione o espaçamento necessário */
 }
