@@ -1,0 +1,115 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+:root {
+    --corPrincipal: #124559;
+    --corHover: #123745;
+    --corActive: #0B222B;
+    --corPrincipalClara: #1D6987;
+    --corPrincipalMaisClara: #2B8EB5;
+    --corBg: #fff;
+    --corBg2: #F2F7F9;
+}
+
+body {
+  height: 100vh;
+  background: var(--corBg);
+  overflow-x: hidden;
+}
+
+.dashboard-vendedor {
+    width: 95%;
+    height: 100%;
+    padding-left: 10px; 
+    background-color: var(--corBg);
+    color: var(--corPrincipal);
+    margin: 0 auto; 
+}
+
+
+.dashboard-vendedor h2 {
+    font-size: 22px;
+    color: var(--corPrincipal);
+    margin-bottom: 20px;
+}
+
+.cards-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.card {
+    flex: 1;
+    height: 150px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    color: var(--corPrincipal);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.line-chart-container {
+    width: 100%;
+    min-height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    padding: 20px;
+    background-color: var(--corBg2);
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.table-container {
+    width: 100%;
+    margin: 0 auto;
+    overflow-x: auto;
+}
+
+.table-container table {
+    width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.table-container th, .table-container td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.table-container th {
+    background-color: var(--corBg2);
+    color: var(--corPrincipal);
+}
+
+@media screen and (max-width: 768px) {
+    .dashboard-vendedor {
+        padding: 10px;
+    }
+
+    .cards-container {
+        flex-direction: column;
+    }
+
+    .card {
+        margin-bottom: 10px;
+    }
+
+    .line-chart-container, .table-container {
+        width: 100%;
+    }
+}

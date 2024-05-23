@@ -21,6 +21,7 @@
 body {
   height: 100vh;
   background: var(--corBg);
+  overflow-x: hidden;
 }
 
 .sidebar {
@@ -28,10 +29,11 @@ body {
     top: 0;
     left: 0;
     height: 100%;
-    width: 300px;
+    width: 250px;
     z-index: 100;
     background: linear-gradient(39deg, rgba(11,34,43,1) 0%, rgba(18,69,89,1) 35%, rgba(29,105,135,1) 100%);
     transition: all .2s ease;
+    pointer-events: auto;
 }
 
 .sidebar.closed {
@@ -49,6 +51,7 @@ body {
 
 .sidebar.closed .nav-icon {
     min-width: 80px;
+    margin-bottom: 5px;
 }
 
 .sidebar.closed .icon-logo {
@@ -140,6 +143,7 @@ header {
     font-size: 12px;
 }
 
+
 .sidebar li {
     padding: 4%;
     height: 60px;
@@ -150,7 +154,7 @@ header {
 }
 
 .sidebar li a {
-    font-size: 22px;
+    font-size: 27px;
     height: 100%;
     min-height: 60px;
     width: 100%;
@@ -162,11 +166,18 @@ header {
     transition: all .2s ease-in;
 
     &:hover {
-        background: var(--corBg);
+        background: var(--corBg2);
         color: var(--corPrincipal);
         border-radius: 10px;
-        
     }
+}
+
+.sidebar li a .nav-text {
+    font-size: 18px;
+}
+
+.sidebar li a:hover .closed-nav-text {
+    color: var(--corPrincipal);
 }
 
 .sidebar li a.active {
@@ -175,6 +186,9 @@ header {
     pointer-events: none;
 }
 
+.sidebar li a.active .closed-nav-text {
+    color: var(--corPrincipal);
+}
 
 .sidebar li .nav-icon {
     display: flex;
@@ -191,69 +205,101 @@ header {
 .sidebar .menu-bar {
     height: 88%;
     display: flex;
+    margin-top: 0.7rem;
     flex-direction: column;
     justify-content: space-between;
 }
 
+
+.main {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    position: relative;
+    left: 100px;
+    height: 100vh;
+    width: calc(100% - 100px);
+    transition: all .4s ease;
+  }
+  
+  .sidebar.closed ~ .main {
+    left: 100px;
+    width: calc(100% - 100px);
+  }
+  
+  @media screen and (max-width: 1599px) {
+    .main {
+      left: 100px;
+      width: calc(100% - 100px);
+    }
+    .sidebar.closed ~ .main {
+      left: 100px;
+      width: calc(100% - 100px);
+    }
+  }
+
+.nav-icon-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+        color: var(--corPrincipal);
+    }
+}
+
+.nav-icon-container .closed-nav-text {
+    font-size: 10px;
+    color: var(--corBg);
+    opacity: 0;
+    display: none;
+    transition: all .3s ease;
+}
+
+.closed-nav-text.active {
+    color: var(--corPrincipal);
+}
+
+.sidebar.closed .closed-nav-text {
+    opacity: 1;
+    display: block;
+}
+
+@media screen and (max-width: 1599px){
+    .panel-logo {
+        margin-top: -2%;
+    }
+
+    .sidebar.closed .panel-logo {
+        margin-top: -10%;
+        margin-bottom: 3%;
+    }
+
+    .menu-bar {
+        margin-top: 6%;
+        height: 80%;
+    }
+
+    .toggle {
+        margin-top: 5%;
+    }
+
+    .sidebar.closed .toggle {
+        margin-top: 16%;
+    }
+}
+
 .main {
     position: relative;
-    left: 230px;
-    height: 100vh;
-    width: calc(100% - 230px);
+    left: 120px;
+    width: calc(100% - 200px);
     transition: all .4s ease;
+    padding: 20px; 
+    box-sizing: border-box; 
 }
 
 .sidebar.closed ~ .main {
-    left: 90px;
-    width: calc(100% - 90px);
-}
-
-/* ----- CONFIGURANDO OS TOOLTIPS ---- */
-
-.nav-link {
-    position: relative; 
-}
-
-.nav-tooltip {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    opacity: 0;
-    background-color: rgba(12, 12, 12, 0.9);
-    color: white;
-    padding: 5px 10px;
-    border-radius: 5px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: opacity 0.3s ease, right 0.3s ease;
-    pointer-events: none;
-    letter-spacing: 0.5px;
-    z-index: 300;
-    white-space: nowrap;
-
-    /* Adicione um recuo fixo à direita */
-    right: -130px;
-}
-
-.nav-tooltip::before {
-    position: absolute;
-    content: "";
-    width: 10px;
-    height: 10px;
-    background-color: rgba(12, 12, 12, 0.9);
-    transform: rotate(45deg);
-    left: -5px;
-    top: 50%;
-    transform: translateY(-50%) rotate(45deg);
-}
-
-.sidebar.closed .nav-link:hover .nav-tooltip {
-    opacity: 1;
-    pointer-events: auto;
-}
-
-/* Espaçamento à direita dos itens do menu para acomodar os tooltips */
-.nav-link {
-    padding-right: 100px; /* Adicione o espaçamento necessário */
+    left: 50px;
+    width: calc(100% - 40px);
 }

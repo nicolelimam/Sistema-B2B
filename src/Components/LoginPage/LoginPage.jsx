@@ -1,16 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import './LoginPage.css';
 import { Helmet } from "react-helmet";
 import login_img from '../Assets/login-img.svg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons';
 import { Link, useNavigate } from 'react-router-dom';
+import RecuperarSenha from "./RecuperarSenha";
 
 const LoginPage = () => {
+    const [modalOpen, setModalOpen] = useState(false);
     const navigate = useNavigate();
 
     const handleLoginClick = () => {
         navigate('/cadastro');
+    };
+
+    const handleForgotPasswordClick = (e) => {
+        e.preventDefault();
+        setModalOpen(true);
+    };
+
+    const closeModal = () => {
+        setModalOpen(false);
     };
 
     return (
@@ -37,7 +48,7 @@ const LoginPage = () => {
                             <FontAwesomeIcon icon={faLock} className="icon"/>
                             <input type="password" name="campoSenha" id="campoSenha" placeholder="Senha" className="campotxt"/>
                         </div>
-                        <a href="" className="redef-senha">Esqueceu sua senha?</a><br />
+                        <a href="#" className="redef-senha" onClick={handleForgotPasswordClick}>Esqueceu sua senha?</a><br />
                         {/* <button type="submit" id="btnLogin">LOGIN</button> */}
                         <div className="btn-login">
                             <span className="btn-login-content">Login</span>
@@ -50,6 +61,7 @@ const LoginPage = () => {
                     </div>
                 </div>
             </div>
+            {modalOpen && <RecuperarSenha onClose={closeModal} />}
         </div>
     );
 };

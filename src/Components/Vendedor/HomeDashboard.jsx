@@ -1,15 +1,14 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import './HomeDashboard.css'; 
 import { Helmet } from "react-helmet";
-import { Link, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import logo_img from '../Assets/icon-logotipo.svg';
 import { faChevronRight, faHouse, faBell, faTag, faCartFlatbed, faHandshake, faSquarePollVertical, faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
+import DashboardVendedor from './DashboardVendedor';
 
 const HomeDashboard = () => {
+  const [currentView, setCurrentView] = useState('Inicio');
 
   useEffect(() => {
-    //Definindo as configurações do menu para expandir e diminuir
     const body = document.querySelector("body");
     const sidebar = body.querySelector(".sidebar");
     const toggle = body.querySelector(".toggle");
@@ -25,92 +24,126 @@ const HomeDashboard = () => {
     };
   }, []);
 
+  const renderView = () => {
+    switch (currentView) {
+      case 'Inicio':
+        return <DashboardVendedor />;
+      case 'Notificacoes':
+        return <div className="texto">Notificações</div>;
+      case 'Vendas':
+        return <div className="texto">Vendas</div>;
+      case 'Inventario':
+        return <div className="texto">Inventário</div>;
+      case 'Relatorio':
+        return <div className="texto">Relatório</div>;
+      default:
+        return <div className="texto">Ainda não há modal para exibir aqui</div>;
+    }
+  };
+
+  const getHelmetTitle = () => {
+    switch (currentView) {
+      case 'Inicio':
+        return 'Início';
+      case 'Notificacoes':
+        return 'Notificações';
+      case 'Vendas':
+        return 'Vendas';
+      case 'Inventario':
+        return 'Inventário';
+      case 'Relatorio':
+        return 'Relatório';
+      default:
+        return 'Não definido';
+    }
+  };
+
   return (
-      <div className="container">
-        <Helmet>
-            <title>Home | Dashboard</title>
-        </Helmet>
+    <div className="container">
+      <Helmet>
+        <title>{getHelmetTitle()}</title>
+      </Helmet>
 
-        <nav className="sidebar closed">
-            <header>
-                <div className="panel-logo">
-                    <span className="icon-logo"><FontAwesomeIcon icon={faHandshake} className="icon-logotipo"/></span>
-                    <span className="logotipo">Logo</span>
-                </div>
+      <nav className="sidebar closed">
+        <header>
+          <div className="panel-logo">
+            <span className="icon-logo"><FontAwesomeIcon icon={faHandshake} className="icon-logotipo"/></span>
+            <span className="logotipo">Logo</span>
+          </div>
 
-                <div className="toggle">
-                    <FontAwesomeIcon icon={faChevronRight} className="toggle-icon"/>
-                </div>
-            </header>
+          <div className="toggle">
+            <FontAwesomeIcon icon={faChevronRight} className="toggle-icon"/>
+          </div>
+        </header>
 
-            <div className="menu-bar">
-                <div className="menu">
-                    <ul className="nav-list">
-                        <li className="nav-link">
-                            <a href="" className="active" id="linkInicio">
-                                <FontAwesomeIcon icon={faHouse} className="nav-icon"/>
-                                <span className="text nav-text">Início</span>
-                            </a>
-                            <span className="nav-tooltip">
-                                Início
-                            </span>
-                        </li>
-                        <li className="nav-link">
-                            <a href="" id="linkNotificacoes">
-                                <FontAwesomeIcon icon={faBell} className="nav-icon"/>
-                                <span className="text nav-text">Notificações</span>
-                            </a>
-                            <span className="nav-tooltip">
-                                Notificações
-                            </span>
-                        </li>
-                        <li className="nav-link">
-                            <a href="" id="linkVendas">
-                                <FontAwesomeIcon icon={faTag} className="nav-icon"/>
-                                <span className="text nav-text">Vendas</span>
-                            </a>
-                            <span className="nav-tooltip">
-                                Vendas
-                            </span>
-                        </li>
-                        <li className="nav-link">
-                            <a href="" id="linkInventario">
-                                <FontAwesomeIcon icon={faCartFlatbed} className="nav-icon"/>
-                                <span className="text nav-text">Inventário</span>
-                            </a>
-                            <span className="nav-tooltip">
-                                Inventário
-                            </span>
-                        </li>
-                        <li className="nav-link">
-                            <a href="" id="linkRelatorio">
-                                <FontAwesomeIcon icon={faSquarePollVertical} className="nav-icon"/>
-                                <span className="text nav-text">Relatório</span>
-                            </a>
-                            <span className="nav-tooltip">
-                                Relatório
-                            </span>
-                        </li>
-                    </ul>
+        <div className="menu-bar">
+          <div className="menu">
+            <ul className="nav-list">
+              <li className="nav-link">
+                <a href="#" className={`nav-link ${currentView === 'Inicio' ? 'active' : ''}`} onClick={() => setCurrentView('Inicio')}>
+                  <div className="nav-icon-container">
+                    <FontAwesomeIcon icon={faHouse} className="nav-icon"/>
+                    <span className="closed-nav-text">Início</span>
+                  </div>
+                  <span className="text nav-text">Início</span>
+                </a>
+              </li>
+              <li className="nav-link">
+                <a href="#" className={`nav-link ${currentView === 'Notificacoes' ? 'active' : ''}`} onClick={() => setCurrentView('Notificacoes')}>
+                  <div className="nav-icon-container">
+                    <FontAwesomeIcon icon={faBell} className="nav-icon"/>
+                    <span className="closed-nav-text">Notificações</span>
+                  </div>
+                  <span className="text nav-text">Notificações</span>
+                </a>
+              </li>
+              <li className="nav-link">
+                <a href="#" className={`nav-link ${currentView === 'Vendas' ? 'active' : ''}`} onClick={() => setCurrentView('Vendas')}>
+                  <div className="nav-icon-container">
+                    <FontAwesomeIcon icon={faTag} className="nav-icon"/>
+                    <span className="closed-nav-text">Vendas</span>
+                  </div>
+                  <span className="text nav-text">Vendas</span>
+                </a>
+              </li>
+              <li className="nav-link">
+                <a href="#" className={`nav-link ${currentView === 'Inventario' ? 'active' : ''}`} onClick={() => setCurrentView('Inventario')}>
+                  <div className="nav-icon-container">
+                    <FontAwesomeIcon icon={faCartFlatbed} className="nav-icon"/>
+                    <span className="closed-nav-text">Inventário</span>
+                  </div>
+                  <span className="text nav-text">Inventário</span>
+                </a>
+              </li>
+              <li className="nav-link">
+                <a href="#" className={`nav-link ${currentView === 'Relatorio' ? 'active' : ''}`} onClick={() => setCurrentView('Relatorio')}>
+                  <div className="nav-icon-container">
+                    <FontAwesomeIcon icon={faSquarePollVertical} className="nav-icon"/>
+                    <span className="closed-nav-text">Relatório</span>
+                  </div>
+                  <span className="text nav-text">Relatório</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div className="content-bottom">
+            <li className="btn-logout">
+              <a href="#" id="linkLogout" className={`nav-link ${currentView === 'Logout' ? 'active' : ''}`} onClick={() => setCurrentView('Logout')}>
+                <div className="nav-icon-container">
+                  <FontAwesomeIcon icon={faRightFromBracket} className="nav-icon"/>
+                  <span className="closed-nav-text">Sair</span>
                 </div>
-                <div className="content-bottom">
-                    <li className="btn-logout">
-                        <a href="" id="linkLogout">
-                            <FontAwesomeIcon icon={faRightFromBracket} className="nav-icon"/>
-                            <span className="text nav-text">Sair</span>
-                        </a>
-                        <span className="nav-tooltip tooltip-logout">
-                                Relatório
-                        </span>
-                    </li>
-                </div>
-            </div>
-        </nav>
-
-        <div className="main">
-            <div className="texto">Dashboard</div>
+                <span className="text nav-text">Sair</span>
+              </a>
+            </li>
+          </div>
         </div>
+      </nav>
+      
+      <div className="main">
+        {renderView()}
       </div>
+    </div>
   );
 };
 

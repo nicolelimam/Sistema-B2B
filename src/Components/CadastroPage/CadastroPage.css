@@ -359,7 +359,7 @@ select#selectSetor {
 }
 
 .radio-btn .check:hover svg {
-    stroke: var(--accent-color, #123745A);
+    stroke: var(--accent-color, #123745);
 }
 
 .radio-btn input:checked + .check svg {
