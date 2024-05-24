@@ -4,6 +4,8 @@ import { Helmet } from "react-helmet";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronRight, faHouse, faBell, faTag, faCartFlatbed, faHandshake, faSquarePollVertical, faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 import DashboardVendedor from './DashboardVendedor';
+import NotificacoesVendedor from "./NotificacoesVendedor";
+import Vendas from "./Vendas";
 
 const HomeDashboard = () => {
   const [currentView, setCurrentView] = useState('Inicio');
@@ -29,9 +31,9 @@ const HomeDashboard = () => {
       case 'Inicio':
         return <DashboardVendedor />;
       case 'Notificacoes':
-        return <div className="texto">Notificações</div>;
+        return <NotificacoesVendedor />;
       case 'Vendas':
-        return <div className="texto">Vendas</div>;
+        return <Vendas />;
       case 'Inventario':
         return <div className="texto">Inventário</div>;
       case 'Relatorio':

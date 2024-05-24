@@ -1,0 +1,193 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+:root {
+    --corPrincipal: #124559;
+    --corHover: #123745;
+    --corActive: #0B222B;
+    --corPrincipalClara: #1D6987;
+    --corPrincipalMaisClara: #2B8EB5;
+    --corBg: #fff;
+    --corBg2: #F2F7F9;
+}
+
+body {
+  height: 100vh;
+  background: var(--corBg);
+  overflow-x: hidden;
+}
+
+.container-notificacoes {
+    width: 95%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-left: 10px; 
+    background-color: var(--corBg);
+    color: var(--corPrincipal);
+    margin: 0 auto; 
+}
+
+.top-n {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.btn-limpar-notificacoes {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    font-size: 20px;
+    color: var(--corPrincipal);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    position: relative;
+
+    &:hover {
+        color: var(--corHover);
+    }
+    &:active {
+        color: var(--corActive);
+    }
+}
+
+.btn-limpar-notificacoes::before,
+.btn-limpar-notificacoes::after {
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+.btn-limpar-notificacoes::before {
+    content: "";
+    width: 10px;
+    height: 10px;
+    background: var(--corActive);
+    position: absolute;
+    top: 50%;
+    left: -15px;
+    transform: translateY(-50%) rotate(45deg);
+}
+
+.btn-limpar-notificacoes::after {
+    content: "Limpar notificações";
+    width: 130px;
+    height: 40px;
+    background: var(--corActive);
+    color: var(--corBg);
+    border-radius: 10px;
+    position: absolute;
+    font-size: 12px;
+    top: 50%;
+    left: -140px;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@keyframes fadeInOut {
+    0% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+.btn-limpar-notificacoes:hover::before,
+.btn-limpar-notificacoes:hover::after {
+    opacity: 1;
+    animation: fadeInOut 3s forwards;
+}
+
+.bottom-n {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.panel-notificacoes {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    background: var(--corBg2);
+    min-height: 80vh;
+    border-radius: 10px;
+    padding: 2%;
+    margin-bottom: 2rem;
+    border: 0.2px solid var(--corPrincipal) 70%;
+}
+
+.notificacao {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 100px;
+    background: var(--corBg);
+    padding: 2%;
+    border-radius: 10px;
+    text-align: left;
+    cursor: pointer;
+    transition: all .3s ease;
+    margin-bottom: 15px;
+    border: 1px solid var(--corPrincipal) 50%;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+
+    &:hover {
+        transform: translateY(3px);
+    }
+}
+
+.texto-notificacao {
+    font-size: 14px;
+    text-align: justify;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.data-notificacao {
+    font-size: 12px;
+}
+
+@media screen and (max-width: 800px) {
+    .container-notificacoes {
+        position: relative;
+        top: -65%;
+    }
+
+    .top-n{
+        position: relative;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .container-notificacoes {
+        position: relative;
+        top: -50%;
+    }
+
+    .top-n{
+        position: relative;
+    }
+}

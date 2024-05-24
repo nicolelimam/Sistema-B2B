@@ -210,6 +210,9 @@ header {
     justify-content: space-between;
 }
 
+.btn-logout {
+    margin-bottom: 1rem;
+}
 
 .main {
     display: flex;
