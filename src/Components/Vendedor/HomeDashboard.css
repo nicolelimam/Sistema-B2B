@@ -22,6 +22,7 @@ body {
   height: 100vh;
   background: var(--corBg);
   overflow-x: hidden;
+  overflow-y: auto;
 }
 
 .sidebar {
@@ -216,14 +217,18 @@ header {
 
 .main {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
+    text-align: left;
+    flex-direction: column;
     justify-content: flex-start;
     position: relative;
+    height: 100%;
     left: 100px;
-    height: 100vh;
     width: calc(100% - 100px);
+    overflow-y: auto; 
     transition: all .4s ease;
-  }
+}
+
   
   .sidebar.closed ~ .main {
     left: 100px;

@@ -39,7 +39,7 @@
     z-index: 1000;
 }
 
-.modal-recuperar-senha {
+.modal-importar-pedidos {
     position: relative;
     z-index: 1001;
     width: 400px;
@@ -47,6 +47,7 @@
     background: #fff;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: all .3s ease-in;
 }
 
 .top {
@@ -59,70 +60,96 @@
 
 .top h3 {
     position: absolute;
-    font-size: 20px;
+    font-size: 22px;
     font-weight: 800;
     color: var(--corPrincipal);
     top: 10px;
-    margin-bottom: 10px;
-}
-
-.btn-fechar {
-    position: absolute;
-    display: flex;
-    width: 30px;
-    height: 30px;
-    align-items: center;
-    justify-content: center;
-    top: 10px;
-    right: 10px;
-    background: var(--corBg2);
-    border-radius: 30px;
-    border: none;
-    color: var(--corPrincipal);
-    cursor: pointer;
-}
-
-.form-redef-senha {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    padding-top: 2%;
-    margin-bottom: 10px;
-}
-
-.form-redef-senha p {
-    font-size: 15px;
-    text-align: justify;
-    color: rgb(117, 114, 114);
     margin-bottom: 15px;
 }
 
-.form-redef-senha #emailUsuario {
+.form-importar-pedidos {
     display: flex;
     width: 100%;
-    height: 35px;
-    border-radius: 30px;
-    border: 1px solid var(--corPrincipal);
-    margin-bottom: 10px;
-    padding: 3%;
-    outline: none;
-    font-size: 14px;
-}
-
-.form-redef-senha .btn-enviar {
-    display: flex;
-    width: 100%;
-    height: 35px;
-    border-radius: 30px;
-    border: none;
     align-items: center;
     justify-content: center;
-    font-size: 16px;
-    font-weight: 600;
-    color: var(--corBg);
+    flex-direction: column;
+    text-align: justify;
+}
+
+.form-importar-pedidos p {
+    font-size: 14px;
+    margin-bottom: 15px;
+    margin-top: 5px;
+}
+
+.panel-upload {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 110px;
+    background: var(--corBg2);
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.btn-upload {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+.icon-btn-importar {
+    font-size: 50px;
+    color: var(--corPrincipal);
     cursor: pointer;
+    transition: all .3s ease;
+
+    &:hover {
+        transform: translateY(-2px);
+        color: var(--corHover);
+    }
+
+    &:active {
+        color: var(--corActive);
+    }
+}
+
+.btn-upload-txt {
+    padding: 4%;
+    font-size: 13px;
+    cursor: pointer;
+    font-weight: 600;
+    text-align: center;
+}
+
+.nome-arquivo-importado {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 30px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+#btnImportar {
+    display: flex;
+    width: 130px;
+    align-items: center;
+    justify-content: center;
+    height: 30px;
+    margin-bottom: 10px;
+    border-radius: 30px;
+    border: none;
     background: var(--corPrincipal);
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    color: var(--corBg);
+    font-weight: 600;
+    cursor: pointer;
 
     &:hover {
         background: var(--corHover);
@@ -132,12 +159,15 @@
     }
 }
 
-.icon-btn-fechar {
-    font-size: 20px;
-}
-
-@media screen and (max-width: 899px) {
-    .modal-recuperar-senha {
-        width: 95%;
-    }
+#btnCancelar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--corPrincipal);
+    background: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
 }

@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronRight, faHouse, faBell, faTag, faCartFlatbed, faHandshake, faSquarePollVertical, faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 import DashboardVendedor from './DashboardVendedor';
 import NotificacoesVendedor from "./NotificacoesVendedor";
+import InventarioVendedor from "./InventarioVendedor";
 import Vendas from "./Vendas";
 
 const HomeDashboard = () => {
@@ -35,7 +36,7 @@ const HomeDashboard = () => {
       case 'Vendas':
         return <Vendas />;
       case 'Inventario':
-        return <div className="texto">Inventário</div>;
+        return <InventarioVendedor />;
       case 'Relatorio':
         return <div className="texto">Relatório</div>;
       default:
