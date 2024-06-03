@@ -3,6 +3,7 @@ import "./InventarioVendedor.css";
 import icon_produto from '../Assets/icon-produto.jpg';
 import ImportarProdutos from "./ImportarProdutos";
 import CadastroProdutos from "./CadastroProdutos"; 
+import InfoProduto from "./InfoProduto"; // Importando InfoProduto
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass, faDownload, faUpload, faArrowDownWideShort } from "@fortawesome/free-solid-svg-icons";
 
@@ -12,7 +13,7 @@ function InventarioVendedor() {
   const [showImportTooltip2, setShowImportTooltip2] = useState(false);
   const [isImportarProdutosModalOpen2, setIsImportarProdutosModalOpen2] = useState(false);
   const [isCadastroProdutosOpen, setIsCadastroProdutosOpen] = useState(false); 
-
+  const [isInfoProdutoOpen, setIsInfoProdutoOpen] = useState(false); // Novo estado
 
   const produtos = [
     { id: 1, status: 'disponivel', nome: 'Produto 1', preco: 600.00, quantidade: 10 },
@@ -34,6 +35,14 @@ function InventarioVendedor() {
 
   const closeCadastroProdutosPopup = () => {
     setIsCadastroProdutosOpen(false);
+  };
+
+  const openInfoProdutoPopup = () => {
+    setIsInfoProdutoOpen(true); 
+  };
+
+  const closeInfoProdutoPopup = () => {
+    setIsInfoProdutoOpen(false); 
   };
 
   useEffect(() => {
@@ -72,7 +81,7 @@ function InventarioVendedor() {
       <div className="top-i">
         <h1>Inventário</h1>
       </div>
-      <div className="vertical-nav">
+      <div className="vertical-nav-i">
         <ul className="nav-vertical">
           <li className="nav-vertical-item">
             <button
@@ -157,7 +166,7 @@ function InventarioVendedor() {
         <div className="produtos-container">
           {filteredProdutos.length > 0 ? (
             filteredProdutos.map(produto => (
-              <div key={produto.id} className={`produto-${produto.status} produto-card`}>
+              <div key={produto.id} className={`produto-${produto.status} produto-card`} onClick={openInfoProdutoPopup}>
                 <div className="info-produto">
                   <div className="top-info-produto">
                     <div className="img-produto">
@@ -201,6 +210,7 @@ function InventarioVendedor() {
       <br />
       {isImportarProdutosModalOpen2 && <ImportarProdutos onClose={closeImportarProdutosModal2} />} 
       {isCadastroProdutosOpen && <CadastroProdutos onClose={closeCadastroProdutosPopup} />} 
+      {isInfoProdutoOpen && <InfoProduto onClose={closeInfoProdutoPopup} />} {/* Condicional para exibir InfoProduto */}
     </div>
   );
 }

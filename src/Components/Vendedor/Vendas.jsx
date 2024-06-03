@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './Vendas.css';
 import ImportarPedidos from './ImportarPedidos';
+import InfoPedido from './InfoPedido';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass, faDownload, faUpload } from '@fortawesome/free-solid-svg-icons';
 
@@ -9,6 +10,7 @@ function Vendas() {
   const [showImportTooltip, setShowImportTooltip] = useState(false);
   const [showImportModal, setShowImportModal] = useState(false);
   const [activeTab, setActiveTab] = useState('pendentes');
+  const [selectedPedido, setSelectedPedido] = useState(null);
 
   const pedidos = [
     { id: 1, status: 'pendente', cliente: 'Cliente 1', produtos: [{ nome: 'Produto 1', quantidade: 2 }, { nome: 'Produto 4', quantidade: 1 }], data: '00/00/0000 00:00' },
@@ -57,12 +59,20 @@ function Vendas() {
     setShowImportModal(false);
   };
 
+  const handlePedidoClick = (pedido) => {
+    setSelectedPedido(pedido);
+  };
+
+  const handleClosePedidoModal = () => {
+    setSelectedPedido(null);
+  };
+
   return (
     <div className='container-vendas'>
       <div className="top-v">
         <h1>Vendas</h1>
       </div>
-      <div className="vertical-nav">
+      <div className="vertical-nav-v">
         <ul className="nav-vertical">
           <li className="nav-vertical-item">
             <button
@@ -119,7 +129,7 @@ function Vendas() {
             <div className="no-pedidos-message">Ops! Ainda não há nenhum pedido por aqui...</div>
           ) : (
             filteredPedidos.map(pedido => (
-              <div key={pedido.id} className={`pedido-card pedido-${pedido.status}`}>
+              <div key={pedido.id} className={`pedido-card pedido-${pedido.status}`} onClick={() => handlePedidoClick(pedido)}>
                 <div className="info-pedido">
                   <h4 className="nome-pedido">Pedido {pedido.id}</h4>
                   <h5 className="nome-cliente">{pedido.cliente}</h5>
@@ -160,6 +170,9 @@ function Vendas() {
         </div>
         {showImportModal && (
           <ImportarPedidos onClose={handleCloseImportModal} />
+        )}
+        {selectedPedido && (
+          <InfoPedido pedido={selectedPedido} onClose={handleClosePedidoModal} />
         )}
       </div>
     </div>

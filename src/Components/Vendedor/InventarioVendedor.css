@@ -34,17 +34,20 @@ body {
     background-color: var(--corBg);
     color: var(--corPrincipal);
     margin: 0 auto; 
+    align-items: flex-start;
+    justify-content: flex-start;
 }
 
-.vertical-nav {
+.vertical-nav-i {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
     height: 50px;
     width: 100%;
-    margin-top: 2%;
+    margin-top: -1%;
 }
+
 
 .nav-vertical {
     display: flex;
@@ -53,7 +56,7 @@ body {
     align-items: center;
     justify-content: center;
     gap: 15px;
-    margin-top: -2%;
+
 }
 
 .nav-i-item {
@@ -75,7 +78,7 @@ body {
         background: var(--corBg2);
     }
 
-    &:active, &.active {
+    &:active {
         background: var(--corPrincipal);
         color: var(--corBg);
     }
@@ -91,7 +94,7 @@ body {
     border-radius: 10px;
     margin-bottom: 2rem;
     flex-grow: 1; 
-    margin-top: 2%;
+    margin-top: 1%;
 }
 
 
