@@ -4,19 +4,28 @@ import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import "./InfoProduto.css";
 import icon_produto from "../Assets/icon-produto2.png";
 import PopupConfirmaExclusao from "./PopupConfirmaExclusao";
+import EditarProduto from "./EditarProduto"; 
 
 function InfoProduto({ onClose }) {
-
-  const [isPopupConfirmaExclusaoOpen, setIsPopupConfirmaExclusaoOpen] = useState(false); // Novo estado para controlar a exibição do Popup
+  const [isPopupConfirmaExclusaoOpen, setIsPopupConfirmaExclusaoOpen] = useState(false);
+  const [isEditarProdutoOpen, setIsEditarProdutoOpen] = useState(false); // State to control EditarProduto modal
 
   const openPopupConfirmaExclusao = () => {
-    setIsPopupConfirmaExclusaoOpen(true); 
+    setIsPopupConfirmaExclusaoOpen(true);
   };
 
   const closePopupConfirmaExclusao = () => {
-    setIsPopupConfirmaExclusaoOpen(false); 
+    setIsPopupConfirmaExclusaoOpen(false);
   };
-  
+
+  const openEditarProduto = () => {
+    setIsEditarProdutoOpen(true);
+  };
+
+  const closeEditarProduto = () => {
+    setIsEditarProdutoOpen(false);
+  };
+
   return (
     <div className="modal-container">
       <div className="overlay" onClick={onClose}></div>
@@ -53,8 +62,16 @@ function InfoProduto({ onClose }) {
               </p>
             </div>
             <div className="right-info-prod">
-              <button id="btnEditarProd" className="btn-info-prod">Editar</button>
-              <button id="btnExcluirProd" className="btn-info-prod" onClick={openPopupConfirmaExclusao}>Excluir</button>
+              <button id="btnEditarProd" className="btn-info-prod" onClick={openEditarProduto}>
+                Editar
+              </button>
+              <button
+                id="btnExcluirProd"
+                className="btn-info-prod"
+                onClick={openPopupConfirmaExclusao}
+              >
+                Excluir
+              </button>
             </div>
           </div>
           <h3>Descrição</h3>
@@ -75,7 +92,12 @@ function InfoProduto({ onClose }) {
           </p>
         </div>
       </div>
-      {isPopupConfirmaExclusaoOpen && <PopupConfirmaExclusao onClose={closePopupConfirmaExclusao} />} 
+      {isPopupConfirmaExclusaoOpen && (
+        <PopupConfirmaExclusao onClose={closePopupConfirmaExclusao} />
+      )}
+      {isEditarProdutoOpen && (
+        <EditarProduto onClose={closeEditarProduto} /> // Render the EditarProduto modal
+      )}
     </div>
   );
 }

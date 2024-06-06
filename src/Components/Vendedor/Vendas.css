@@ -203,7 +203,7 @@ body {
 
 .tooltip-exportar, .tooltip-importar {
   position: absolute;
-  bottom: 40px;
+  bottom: 35px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -274,7 +274,7 @@ body {
 }
 
 .pedido-card:hover {
-  transform: translateY(3px);
+  transform: translateY(-3px);
 }
 
 .info-pedido {

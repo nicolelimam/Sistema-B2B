@@ -7,6 +7,7 @@ import DashboardVendedor from './DashboardVendedor';
 import NotificacoesVendedor from "./NotificacoesVendedor";
 import InventarioVendedor from "./InventarioVendedor";
 import Vendas from "./Vendas";
+import RelatorioVendedor from "./RelatorioVendedor";
 
 const HomeDashboard = () => {
   const [currentView, setCurrentView] = useState('Inicio');
@@ -38,7 +39,7 @@ const HomeDashboard = () => {
       case 'Inventario':
         return <InventarioVendedor />;
       case 'Relatorio':
-        return <div className="texto">Relatório</div>;
+        return <RelatorioVendedor />;
       default:
         return <div className="texto">Ainda não há modal para exibir aqui</div>;
     }

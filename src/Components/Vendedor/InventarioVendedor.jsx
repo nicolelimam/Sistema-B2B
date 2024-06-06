@@ -3,7 +3,8 @@ import "./InventarioVendedor.css";
 import icon_produto from '../Assets/icon-produto.jpg';
 import ImportarProdutos from "./ImportarProdutos";
 import CadastroProdutos from "./CadastroProdutos"; 
-import InfoProduto from "./InfoProduto"; // Importando InfoProduto
+import InfoProduto from "./InfoProduto"; 
+import PopupConfirmaExclusao from "./PopupConfirmaExclusao";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass, faDownload, faUpload, faArrowDownWideShort } from "@fortawesome/free-solid-svg-icons";
 
@@ -14,6 +15,8 @@ function InventarioVendedor() {
   const [isImportarProdutosModalOpen2, setIsImportarProdutosModalOpen2] = useState(false);
   const [isCadastroProdutosOpen, setIsCadastroProdutosOpen] = useState(false); 
   const [isInfoProdutoOpen, setIsInfoProdutoOpen] = useState(false); // Novo estado
+  const [isConfirmExclusaoOpen, setIsConfirmExclusaoOpen] = useState(false);
+  const [produtoParaExcluir, setProdutoParaExcluir] = useState(null);
 
   const produtos = [
     { id: 1, status: 'disponivel', nome: 'Produto 1', preco: 600.00, quantidade: 10 },
@@ -43,6 +46,12 @@ function InventarioVendedor() {
 
   const closeInfoProdutoPopup = () => {
     setIsInfoProdutoOpen(false); 
+  };
+
+  const openConfirmExclusaoPopup = (produto, event) => {
+    event.stopPropagation(); // Evita a propagação do clique para o card
+    setProdutoParaExcluir(produto);
+    setIsConfirmExclusaoOpen(true);
   };
 
   useEffect(() => {
@@ -196,7 +205,7 @@ function InventarioVendedor() {
                       Tornar disponível
                     </button>
                   )}
-                  <button className="btn-excluir btn-i2">
+                  <button className="btn-excluir btn-i2" onClick={(event) => openConfirmExclusaoPopup(produto, event)}>
                     Excluir
                   </button>
                 </div>
@@ -209,8 +218,9 @@ function InventarioVendedor() {
       </div>
       <br />
       {isImportarProdutosModalOpen2 && <ImportarProdutos onClose={closeImportarProdutosModal2} />} 
-      {isCadastroProdutosOpen && <CadastroProdutos onClose={closeCadastroProdutosPopup} />} 
-      {isInfoProdutoOpen && <InfoProduto onClose={closeInfoProdutoPopup} />} {/* Condicional para exibir InfoProduto */}
+      {isCadastroProdutosOpen && <CadastroProdutos onClose={closeCadastroProdutosPopup} />}
+      {isInfoProdutoOpen && <InfoProduto onClose={closeInfoProdutoPopup} />} 
+      {isConfirmExclusaoOpen && (<PopupConfirmaExclusao onClose={() => setIsConfirmExclusaoOpen(false)} produto={produtoParaExcluir} />)}
     </div>
   );
 }

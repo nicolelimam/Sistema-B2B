@@ -1,0 +1,105 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+:root {
+    --corPrincipal: #124559;
+    --corHover: #123745;
+    --corActive: #0B222B;
+    --corPrincipalClara: #1D6987;
+    --corPrincipalMaisClara: #2B8EB5;
+    --corBg: #fff;
+    --corBg2: #F2F7F9;
+}
+
+body {
+  height: 100vh;
+  background: var(--corBg);
+  overflow-x: hidden;
+}
+
+.relatorio-container {
+    width: 95%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-left: 10px; 
+    background-color: var(--corBg);
+    color: var(--corPrincipal);
+    margin: 0 auto; 
+}
+
+.relatorio-content {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding-right: 4%;
+    margin-top: 2%;
+    width: 100%;
+}
+
+.left-rc {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 1%;
+    width: 50%;
+    text-align: justify;
+}
+
+.desempenho-vendedor.bom {
+    color: green;
+}
+
+.right-rc {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+}
+
+.panel-right-rc {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 3%;
+    width: 80%;
+    text-align: left;
+    background: var(--corBg2);
+    margin-left: 10%;
+    margin-top: -2%;
+    border-radius: 10px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.container-grafico-relatorio {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    width: 100%;
+    margin-top: 3%;
+}
+
+.chart-relatorio {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--corBg2);
+    border-radius: 10px;
+    width: 94%;
+    min-height: 200px;
+    margin-top: 1%;
+}
+
+
+
+  
