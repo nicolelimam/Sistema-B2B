@@ -1,5 +1,8 @@
 import React from "react";
-import "./RelatorioVendedor.css"
+import "./RelatorioVendedor.css";
+import { Chart as ChartJS } from "chart.js/auto";
+import { Bar, Line } from "react-chartjs-2";
+import sourceData from "../json/sourceData.json";
 
 function RelatorioVendedor() {
   return (
@@ -35,7 +38,28 @@ function RelatorioVendedor() {
       <div className="container-grafico-relatorio">
         <h3>Confira seus produtos mais populares nesse último mês</h3>
         <div className="chart-relatorio">
-           
+          <div className="dataCard customerCard">
+            <Bar
+              data={{
+                labels: sourceData.map((data) => data.label),
+                datasets: [
+                  {
+                    label: "Número de vendas",
+                    data: sourceData.map((data) => data.value),
+                  },
+                ],
+              }}
+              options={{
+                maintainAspectRatio: false,
+                responsive: true,
+                scales: {
+                  x: {
+                    barPercentage: 0.4,
+                  },
+                },
+              }}
+            />
+          </div>
         </div>
       </div>
     </div>

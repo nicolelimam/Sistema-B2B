@@ -1,3 +1,4 @@
+
 * {
     padding: 0;
     margin: 0;
@@ -16,7 +17,7 @@
     --corBg2: #F2F7F9;
 }
 
-.popup-modal-container {
+.confirmar-envio-container{
     position: fixed;
     top: 0;
     left: 0;
@@ -26,7 +27,6 @@
     justify-content: center;
     align-items: center;
     z-index: 2000;
-    overflow-y: auto;
 }
 
 .overlay {
@@ -36,54 +36,63 @@
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.555);
-    z-index: 2000; 
+    z-index: 2000;
 }
 
-.top h2 {
-    font-size: 22px;
-}
-
-.modal-confirmar-exclusao {
+.panel-confirmar-envio {
     position: relative;
-    z-index: 2100;
-    width: 40%;
-    padding: 2%;
+    z-index: 2001;
+    width: 500px;
+    padding: 20px;
     background: #fff;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     transition: all .3s ease-in;
 }
 
-.main-content-pce {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-}
-
-.btn-group-pce {
+  .panel-tornar-indisponivel p {
+    width: 95%;
+  }
+  
+  .btn-group-pcen {
     width: 100%;
     display: flex;
     flex-direction: row;
-    align-items: center;
+    margin-top: 5%;
+    margin-bottom: 1%;
     justify-content: space-between;
-    margin-top: 4%;
-}
-
-#btnCancelarPopup {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 150px;
-    font-weight: 600;
-    font-size: 16px;
-    height: 30px;
-    background: var(--corBg2);
-    color: var(--corPrincipal);
+  }
+  
+  .popup-actions .btn-confirmar-envior {
+    background: #007bff;
+    color: white;
+    padding: 10px;
     border: none;
-    border-radius: 30px;
+    border-radius: 5px;
     cursor: pointer;
+    margin-right: 10px;
+  }
+  
+  .popup-actions .btn-cancelar {
+    background: #dc3545;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .btn-cancelar {
+    width: 120px;
+    height: 30px;
+    border-radius: 30px;
+    outline: none;
+    border: none;
+    background: var(--corBg2);
+    cursor: pointer;
+    color: var(--corPrincipal);
+    font-size: 15px;
+    font-weight: 600;
 
     &:hover {
         color: var(--corHover);
@@ -91,27 +100,42 @@
     &:active {
         color: var(--corActive);
     }
-}
+  }
 
-#btnExcluirPopup {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 150px;
-    font-weight: 600;
-    font-size: 16px;
+  .btn-confirmar {
+    width: 120px;
     height: 30px;
-    background: var(--corPrincipal);
-    border: none;
     border-radius: 30px;
-    cursor: pointer;
+    font-weight: 600;
     outline: none;
+    background: var(--corPrincipal);
     color: var(--corBg);
+    border: none;
+    cursor: pointer;
 
     &:hover {
         background: var(--corHover);
     }
-    &:active {
+    &:acitve {
         background: var(--corActive);
     }
-}
+  }
+
+  .btn-confirmar-envio-popup {
+    width: 120px;
+    height: 30px;
+    border-radius: 30px;
+    font-weight: 600;
+    outline: none;
+    background: var(--corPrincipal);
+    color: var(--corBg);
+    border: none;
+    cursor: pointer;
+
+    &:hover {
+        background: var(--corHover);
+    }
+    &:acitve {
+        background: var(--corActive);
+    }
+  }

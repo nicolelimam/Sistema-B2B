@@ -16,7 +16,7 @@
     --corBg2: #F2F7F9;
 }
 
-.popup-modal-container {
+.cancelar-pedido-container {
     position: fixed;
     top: 0;
     left: 0;
@@ -43,7 +43,7 @@
     font-size: 22px;
 }
 
-.modal-confirmar-exclusao {
+.panel-cancelar-pedido {
     position: relative;
     z-index: 2100;
     width: 40%;
@@ -54,7 +54,7 @@
     transition: all .3s ease-in;
 }
 
-.main-content-pce {
+.main-content-pcp {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -62,7 +62,7 @@
     width: 100%;
 }
 
-.btn-group-pce {
+.btn-group-pcp {
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -93,7 +93,7 @@
     }
 }
 
-#btnExcluirPopup {
+#btnCancelarPedidoPopup {
     display: flex;
     align-items: center;
     justify-content: center;

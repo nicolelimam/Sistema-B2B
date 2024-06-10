@@ -16,7 +16,7 @@
     --corBg2: #F2F7F9;
 }
 
-.popup-modal-container {
+.tornar-disponivel-container{
     position: fixed;
     top: 0;
     left: 0;
@@ -26,7 +26,6 @@
     justify-content: center;
     align-items: center;
     z-index: 2000;
-    overflow-y: auto;
 }
 
 .overlay {
@@ -36,54 +35,85 @@
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.555);
-    z-index: 2000; 
+    z-index: 2000;
 }
 
-.top h2 {
-    font-size: 22px;
-}
-
-.modal-confirmar-exclusao {
+.panel-tornar-disponivel {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
     position: relative;
-    z-index: 2100;
-    width: 40%;
-    padding: 2%;
+    z-index: 2001;
+    width: 500px;
+    padding: 20px;
     background: #fff;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     transition: all .3s ease-in;
 }
 
-.main-content-pce {
+.btn-numerico {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
     width: 100%;
+    margin-top: 2%;
+    gap: 5px;
+    margin-bottom: 2%;
 }
 
-.btn-group-pce {
+.btn-sub, .btn-soma {
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+    border: none;
+    background: var(--corPrincipal);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    color: white;
+    cursor: pointer;
+    font-size: 20px;
+
+    &:hover {
+        background: var(--corHover);
+    }
+    &:active {
+        background: var(--corActive);
+    }
+}
+
+.campo-btn-numerico {
+    width: 90px;
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid var(--corPrincipal);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 20px;
+}
+
+.btn-group-pfd {
     width: 100%;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    margin-top: 4%;
 }
 
-#btnCancelarPopup {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 150px;
-    font-weight: 600;
-    font-size: 16px;
+.btn-cancelar-ptd {
+    width: 120px;
     height: 30px;
-    background: var(--corBg2);
-    color: var(--corPrincipal);
-    border: none;
     border-radius: 30px;
+    outline: none;
+    border: none;
+    background: var(--corBg2);
     cursor: pointer;
+    color: var(--corPrincipal);
+    font-size: 15px;
+    font-weight: 600;
 
     &:hover {
         color: var(--corHover);
@@ -93,25 +123,21 @@
     }
 }
 
-#btnExcluirPopup {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.btn-tornar-disponivel {
     width: 150px;
-    font-weight: 600;
-    font-size: 16px;
     height: 30px;
-    background: var(--corPrincipal);
-    border: none;
     border-radius: 30px;
-    cursor: pointer;
+    font-weight: 600;
     outline: none;
+    background: var(--corPrincipal);
     color: var(--corBg);
+    border: none;
+    cursor: pointer;
 
     &:hover {
         background: var(--corHover);
     }
-    &:active {
+    &:acitve {
         background: var(--corActive);
     }
 }

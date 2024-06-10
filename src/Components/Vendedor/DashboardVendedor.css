@@ -26,13 +26,11 @@ body {
 .dashboard-vendedor {
     width: 95%;
     height: auto; 
-
     padding: 10px; 
     background-color: var(--corBg);
     color: var(--corPrincipal);
     margin: 0 auto; 
 }
-
 
 .dashboard-vendedor h2 {
     font-size: 22px;
@@ -48,30 +46,74 @@ body {
 }
 
 .card {
-    flex: 1;
-    height: 150px;
-    border-radius: 10px;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    flex: 1;
+    height: 150px;
+    min-height: 150px;
+    max-height: 150px;
+    border-radius: 10px;
+    display: flex;
     font-size: 1.2rem;
     color: var(--corPrincipal);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.line-chart-container {
+.card-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    flex: 1;
+    padding: 2%;
+    height: 150px;
+    border-radius: 10px;
+    display: flex;
+    font-size: 1.2rem;
+    color: var(--corPrincipal);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.numero-vendas {
+    font-weight: bold;
+}
+
+.faturamento {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.chart-pie, .line-chart-container {
+    position: relative;
+    height: 100%;
     width: 100%;
-    min-height: 200px;
+}
+
+.chart-pie canvas, .line-chart-container canvas {
+    height: 100% !important;
+    width: 100% !important;
+}
+
+.chart-pie {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto 20px;
+    max-height: 150px;
+    padding: 10px;
+}
+
+.line-chart-container {
+    min-height: 230px;
+    max-height: 230px;
     padding: 20px;
     background-color: var(--corBg2);
     border-radius: 10px;
+    margin-bottom: 2%;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    text-align: center;
 }
+
 
 .table-container {
     width: 100%;
@@ -114,4 +156,3 @@ body {
         width: 100%;
     }
 }
-

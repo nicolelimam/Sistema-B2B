@@ -5,7 +5,10 @@ import ImportarProdutos from "./ImportarProdutos";
 import CadastroProdutos from "./CadastroProdutos"; 
 import InfoProduto from "./InfoProduto"; 
 import PopupConfirmaExclusao from "./PopupConfirmaExclusao";
+import PopupTornarIndisponivel from "./PopupTornarIndisponivel";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import PopupTornarDisponivel from "./PopupTornarDisponivel";
+import EditarProduto from "./EditarProduto";
 import { faMagnifyingGlass, faDownload, faUpload, faArrowDownWideShort } from "@fortawesome/free-solid-svg-icons";
 
 function InventarioVendedor() {
@@ -14,9 +17,13 @@ function InventarioVendedor() {
   const [showImportTooltip2, setShowImportTooltip2] = useState(false);
   const [isImportarProdutosModalOpen2, setIsImportarProdutosModalOpen2] = useState(false);
   const [isCadastroProdutosOpen, setIsCadastroProdutosOpen] = useState(false); 
-  const [isInfoProdutoOpen, setIsInfoProdutoOpen] = useState(false); // Novo estado
+  const [isInfoProdutoOpen, setIsInfoProdutoOpen] = useState(false); 
   const [isConfirmExclusaoOpen, setIsConfirmExclusaoOpen] = useState(false);
   const [produtoParaExcluir, setProdutoParaExcluir] = useState(null);
+  const [isEditarProdutoOpen, setIsEditarProdutoOpen] = useState(false);
+  const [produtoParaEditar, setProdutoParaEditar] = useState(null);
+  const [isTornarIndisponivelOpen, setIsTornarIndisponivelOpen] = useState(false);
+  const [isTornarDisponivelOpen, setIsTornarDisponivelOpen] = useState(false);
 
   const produtos = [
     { id: 1, status: 'disponivel', nome: 'Produto 1', preco: 600.00, quantidade: 10 },
@@ -48,11 +55,43 @@ function InventarioVendedor() {
     setIsInfoProdutoOpen(false); 
   };
 
+  const openTornarDisponivelPopup = (event) => {
+    event.stopPropagation();
+    setIsTornarDisponivelOpen(true);
+  };
+
+  const closeTornarDisponivelPopup = () => {
+    setIsTornarDisponivelOpen(false);
+  };
+
+  const openEditarProdutoPopup = (produto, event) => {
+    event.stopPropagation();
+    setProdutoParaEditar(produto);
+    setIsEditarProdutoOpen(true);
+  };
+
+  const closeEditarProdutoPopup = () => {
+    setIsEditarProdutoOpen(false);
+    setProdutoParaEditar(null);
+  };
+
+
   const openConfirmExclusaoPopup = (produto, event) => {
-    event.stopPropagation(); // Evita a propagação do clique para o card
+    event.stopPropagation(); 
     setProdutoParaExcluir(produto);
     setIsConfirmExclusaoOpen(true);
   };
+
+  const openTornarIndisponivelPopup = (event) => {
+    event.stopPropagation(); 
+    setIsTornarIndisponivelOpen(true);  
+  };
+
+  const closeTornarIndisponivelPopup = () => {
+    setIsTornarIndisponivelOpen(false);  
+    {isTornarIndisponivelOpen && <PopupTornarIndisponivel onClose={closeTornarIndisponivelPopup} />}
+  };
+
 
   useEffect(() => {
     let exportTimer2;
@@ -73,6 +112,8 @@ function InventarioVendedor() {
     }
     return () => clearTimeout(importTimer2);
   }, [showImportTooltip2]);
+
+ 
 
   const handleTabClick2 = (tab) => {
     setActiveTab(tab);
@@ -193,15 +234,19 @@ function InventarioVendedor() {
                   </div>
                 </div>
                 <div className="btn-group">
-                  <button className="btn-editar btn-i2">
+                  <button className="btn-editar btn-i2"
+                  onClick={(event) => openEditarProdutoPopup(produto, event)}>
                     Editar
                   </button>
                   {produto.status === 'disponivel' ? (
-                    <button className="btn-indisponivel btn-i2">
+                    <button className="btn-indisponivel btn-i2"
+                    onClick={openTornarIndisponivelPopup}>
                       Tornar indisponível
                     </button>
                   ) : (
-                    <button className="btn-disponivel btn-i2">
+                    <button className="btn-disponivel btn-i2"
+                    onClick={openTornarDisponivelPopup}
+                     >
                       Tornar disponível
                     </button>
                   )}
@@ -221,6 +266,9 @@ function InventarioVendedor() {
       {isCadastroProdutosOpen && <CadastroProdutos onClose={closeCadastroProdutosPopup} />}
       {isInfoProdutoOpen && <InfoProduto onClose={closeInfoProdutoPopup} />} 
       {isConfirmExclusaoOpen && (<PopupConfirmaExclusao onClose={() => setIsConfirmExclusaoOpen(false)} produto={produtoParaExcluir} />)}
+      {isEditarProdutoOpen && <EditarProduto onClose={closeEditarProdutoPopup} produto={produtoParaEditar} />}
+      {isTornarIndisponivelOpen && <PopupTornarIndisponivel onClose={closeTornarIndisponivelPopup} />}
+      {isTornarDisponivelOpen && <PopupTornarDisponivel onClose={closeTornarDisponivelPopup} />}
     </div>
   );
 }

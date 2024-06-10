@@ -279,3 +279,31 @@
         color: var(--corActive);
     }
 }
+
+.quantidade-container {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  .btn-quantidade {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    background: var(--corPrincipal);
+    border: none;
+    color: var(--corBg);
+    cursor: pointer;
+    border-radius: 30px;  
+    font-size: 16px;
+  }
+  
+  .btn-quantidade:hover {
+    background: var(--corHover);
+  }
+  
+  .btn-quantidade:active {
+    background: var(--corActive);
+  }

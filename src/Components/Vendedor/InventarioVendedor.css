@@ -87,7 +87,7 @@ body {
   .nav-i-item.active {
     background-color:var(--corPrincipal);
     color: #fff;
-    font-weight: bold;
+    
   }
 
 .container-inventario .panel-content {

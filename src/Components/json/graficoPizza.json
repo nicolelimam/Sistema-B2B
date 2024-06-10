@@ -1,0 +1,11 @@
+{
+    "products": [
+      { "name": "Produto 1", "sales": 300 },
+      { "name": "Produto 2", "sales": 500 },
+      { "name": "Produto 3", "sales": 150 },
+      { "name": "Produto 4", "sales": 400 },
+      { "name": "Produto 5", "sales": 700 },
+      { "name": "Produto 6", "sales": 200 }
+    ]
+  }
+  

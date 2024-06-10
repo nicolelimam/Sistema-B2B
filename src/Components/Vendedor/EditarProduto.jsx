@@ -1,16 +1,40 @@
 import React, { useState } from "react";
 import "./EditarProduto.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faXmark } from "@fortawesome/free-solid-svg-icons";
+import { faXmark, faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
 
 function EditarProduto({ onClose }) { 
   const [fileName, setFileName] = useState(""); 
+  const [quantidade, setQuantidade] = useState(1);
+  const [preco, setPreco] = useState("");
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
     if (file) {
       setFileName(file.name);
     }
+  };
+
+  const handleQuantidadeChange = (event) => {
+    const value = event.target.value;
+    if (/^[1-9]\d*$/.test(value) || value === "") {
+      setQuantidade(value === "" ? "" : parseInt(value, 10));
+    }
+  };
+
+  const handlePrecoChange = (event) => {
+    const value = event.target.value.replace(",", ".");
+    if (/^\d*(\.\d{0,2})?$/.test(value)) {
+      setPreco(value.replace(".", ","));
+    }
+  };
+
+  const incrementQuantidade = () => {
+    setQuantidade(prevQuantidade => (prevQuantidade || 0) + 1);
+  };
+
+  const decrementQuantidade = () => {
+    setQuantidade(prevQuantidade => (prevQuantidade > 1 ? prevQuantidade - 1 : 1));
   };
 
   return (
@@ -51,12 +75,32 @@ function EditarProduto({ onClose }) {
               <label htmlFor="quantidadeProd" className="lb-form-editar-prod">
                 Quantidade
               </label>
-              <input type="text" name="quantidadeProd" id="quantidadeProd" />
+              <div className="quantidade-container">
+                <button type="button" onClick={decrementQuantidade} className="btn-quantidade">
+                  <FontAwesomeIcon icon={faMinus} />
+                </button>
+                <input
+                  type="text"
+                  name="quantidadeProd"
+                  id="quantidadeProd"
+                  value={quantidade}
+                  onChange={handleQuantidadeChange}
+                />
+                <button type="button" onClick={incrementQuantidade} className="btn-quantidade">
+                  <FontAwesomeIcon icon={faPlus} />
+                </button>
+              </div>
               <label htmlFor="precoProd" className="lb-form-editar-prod">
                 Preço
               </label>
               <span className="campo-preco">
-                R$ <input type="text" name="precoProd" id="precoProd" />
+                R$ <input
+                  type="text"
+                  name="precoProd"
+                  id="precoProd"
+                  value={preco}
+                  onChange={handlePrecoChange}
+                />
               </span>
               <label htmlFor="btn-imagem-prod" className="lb-form-editar-prod">
                 Imagem do produto
