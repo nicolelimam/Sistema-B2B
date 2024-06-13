@@ -1,0 +1,146 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+:root {
+    --corPrincipal: #124559;
+    --corHover: #123745;
+    --corActive: #0B222B;
+    --corPrincipalClara: #1D6987;
+    --corPrincipalMaisClara: #2B8EB5;
+    --corBg: #fff;
+    --corBg2: #F2F7F9;
+}
+
+body {
+  height: 100vh;
+  background: var(--corBg);
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.info-produto-cliente-container {
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding-left: 1%; 
+    padding-right: 1%;
+    background-color: var(--corBg);
+    color: var(--corPrincipal);
+    margin: 0 auto; 
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.btn-voltar-modal-pai {
+    cursor: pointer;
+    color: gray;
+    text-decoration: none;
+}
+
+.top-ipc {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin-top: 3%;
+    margin-bottom: 2%;
+    gap: 4%;
+}
+
+
+.imagem-produto-ipc {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 350px;
+    height: 350px;
+    min-width: 350px;
+    min-height: 350px;
+    max-width: 350px;
+    max-height: 350px;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+.icon-img-ipc {
+    width: 100%;
+    height: 100%;
+}
+
+.right-ipc {
+    min-width: 500px;
+    width: 100%;
+}
+.nome-produto-ipc {
+    font-size:26px;
+    font-weight: 600;
+}
+
+.preco-produto-ipc {
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--corActive);
+}
+
+.juros-ipc {
+    font-size: 14px;
+    font-weight: 600;
+    color: green;
+}
+
+.button-group-ipc {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 5px;
+    margin-top: 2%;
+}
+
+#btnComprar {
+    width: 70%;
+    height: 30px;
+    border-radius: 30px;
+    background: var(--corPrincipal);
+    border: 2px solid var(--corPrincipal);
+    color: var(--corBg);
+    font-weight: 600;
+    font-size: 15px;
+    cursor: pointer;
+
+    &:hover {
+        background: var(--corHover);
+    }
+    &:active {
+        background: var(--corActive);
+    }
+}
+
+#btnAddItemCarrinho {
+    width: 70%;
+    height: 30px;
+    border-radius: 30px;
+    border: 2px solid var(--corPrincipal);
+    background: var(--corBg);
+    color: var(--corPrincipal);
+    font-weight: 600;
+    cursor: pointer;
+
+    &:hover {
+        background: var(--corBg2);
+    }
+}
+
+.descricao-produto-ipc {
+    font-size: 16px;
+    text-align: justify;
+}

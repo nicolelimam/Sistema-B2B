@@ -4,6 +4,9 @@ import { Helmet } from "react-helmet";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronRight, faHouse, faRocket, faBell, faCartShopping, faReceipt, faHandshake, faHeadset, faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 import HomeContent from "./HomeContent";
+import DescobrirProdutos from "./DescobrirProdutos";
+import NotificacoesCliente from "./NotificacoesCliente";
+import MeuCarrinho from "./MeuCarrinho";
 
 
 function HomeCliente() {
@@ -29,12 +32,12 @@ function HomeCliente() {
     switch (currentView) {
       case 'Inicio':
         return <HomeContent />;
-      case 'Notificacoes':
-        return <div className="texto">Ainda não há modal para exibir aqui</div>;
+      case 'Notificações':
+        return <NotificacoesCliente />;
       case 'Descobrir':
-        return <div className="texto">Ainda não há modal para exibir aqui</div>;
+        return <DescobrirProdutos />;
       case 'Meu Carrinho':
-        return <div className="texto">Ainda não há modal para exibir aqui</div>;
+        return <MeuCarrinho />;
       case 'Meus Pedidos':
         return <div className="texto">Ainda não há modal para exibir aqui</div>;
       case 'Suporte':

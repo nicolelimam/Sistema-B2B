@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "./Vendas.css";
 import ImportarPedidos from "./ImportarPedidos";
-import InfoPedido from "./InfoPedido";
 import PopupCancelarPedido from "./PopupCancelarPedido";
 import PopupConfirmaEnvio from "./PopupConfirmaEnvio";
+import InfoPedido from "./InfoPedido";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass, faDownload, faUpload } from "@fortawesome/free-solid-svg-icons";
 
@@ -12,9 +12,10 @@ function Vendas() {
   const [showImportTooltip, setShowImportTooltip] = useState(false);
   const [showImportModal, setShowImportModal] = useState(false);
   const [activeTab, setActiveTab] = useState("pendentes");
-  const [selectedPedido, setSelectedPedido] = useState(null);
   const [showCancelPopup, setShowCancelPopup] = useState(false);
   const [showConfirmPopup, setShowConfirmPopup] = useState(false);
+  const [showInfoPedido, setShowInfoPedido] = useState(false);
+  const [selectedPedido, setSelectedPedido] = useState(null);
 
   const pedidos = [
     {
@@ -105,14 +106,6 @@ function Vendas() {
     setShowImportModal(false);
   };
 
-  const handlePedidoClick = (pedido) => {
-    setSelectedPedido(pedido);
-  };
-
-  const handleClosePedidoModal = () => {
-    setSelectedPedido(null);
-  };
-
   const handleOpenCancelPopup = (e) => {
     e.stopPropagation();
     setShowCancelPopup(true);
@@ -129,6 +122,16 @@ function Vendas() {
 
   const handleCloseConfirmPopup = () => {
     setShowConfirmPopup(false);
+  };
+
+  const handlePedidoClick = (pedido) => {
+    setSelectedPedido(pedido);
+    setShowInfoPedido(true);
+  };
+
+  const handleCloseInfoPedido = () => {
+    setShowInfoPedido(false);
+    setSelectedPedido(null);
   };
 
   return (
@@ -271,27 +274,13 @@ function Vendas() {
             ))
           )}
         </div>
+        {showImportModal && <ImportarPedidos onClose={handleCloseImportModal} />}
+        {showCancelPopup && <PopupCancelarPedido onClose={handleCloseCancelPopup} />}
+        {showConfirmPopup && <PopupConfirmaEnvio onClose={handleCloseConfirmPopup} />}
+        {showInfoPedido && selectedPedido && (
+          <InfoPedido pedido={selectedPedido} onClose={handleCloseInfoPedido} />
+        )}
       </div>
-      {showImportModal && (
-        <div className="modal-overlay">
-          <ImportarPedidos onClose={handleCloseImportModal} />
-        </div>
-      )}
-      {selectedPedido && (
-        <div className="modal-overlay">
-          <InfoPedido pedido={selectedPedido} onClose={handleClosePedidoModal} />
-        </div>
-      )}
-      {showCancelPopup && (
-        <div className="modal-overlay">
-          <PopupCancelarPedido onClose={handleCloseCancelPopup} />
-        </div>
-      )}
-      {showConfirmPopup && (
-        <div className="modal-overlay">
-          <PopupConfirmaEnvio onClose={handleCloseConfirmPopup} />
-        </div>
-      )}
     </div>
   );
 }

@@ -23,7 +23,7 @@ function InfoPedido({ pedido, onClose }) {
                 <li key={index} className="item-pedido">
                   <div className="left-item-pedido">
                     <div className="img-produto">
-                        <img src={icon_produto_pedido} alt="Ícone do produto" />
+                      <img src={icon_produto_pedido} alt="Ícone do produto" />
                     </div>
                     <span className="nome-produto">{produto.nome}</span>
                   </div>
@@ -51,9 +51,7 @@ function InfoPedido({ pedido, onClose }) {
               </span></p> 
               <br />
               <p>Valor do frete: <br />
-                <span className="valor-frete">
-                  Frete grátis
-                </span>
+                <span className="valor-frete">Frete grátis</span>
               </p> 
             </div>
             <div className="right-info-entrega">
